@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\FibonacciUhrController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/fibonacci', [FibonacciUhrController::class, 'showTimeView'])->name('fibonacci-uhr-view');
+
+Route::post('/fibonacci-uhr-view', [FibonacciUhrController::class, 'showTimeView'])->name('fibonacci-uhr-process');
 
 Route::middleware([
     'auth:sanctum',
@@ -15,3 +20,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
