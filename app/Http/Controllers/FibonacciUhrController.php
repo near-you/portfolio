@@ -19,7 +19,7 @@ class FibonacciUhrController extends Controller
         return view('fibonacci_uhr', compact('time', 'representation'));
     }
 
-    public function getCurrentTime()
+    public function getCurrentTime(): array
     {
         date_default_timezone_set('Europe/Berlin');
         $currentTime = new DateTime();
@@ -31,7 +31,7 @@ class FibonacciUhrController extends Controller
         return ['hours' => $hours, 'minutes' => $minutes];
     }
 
-    public function getFibonacciRepresentation($hours, $minutes)
+    public function getFibonacciRepresentation($hours, $minutes): array
     {
         $minuteBlocks = $minutes / 5;
         $hourCombinations = $this->getCombinations($hours);
